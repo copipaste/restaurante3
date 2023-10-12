@@ -76,38 +76,44 @@
         <x-adminlte-datatable id="table1" :heads="$heads" hoverable with-buttons>
             @foreach($promociones as $promocion)
                 <tr>
-                    <td>{{ $promocion->nombre }}</td>
-                    <td>{{ $promocion->descripcion }}</td>
-                    <td>{{ $promocion->procentajeDescuento }}</td>
-                    <td width="15px">
-                        <div class="d-flex">
+                   
+                    @if ($promocion->id != null) 
+                                
+                            
+                        
+                        <td>{{ $promocion->nombre }}</td>
+                        <td>{{ $promocion->descripcion }}</td>
+                        <td>{{ $promocion->procentajeDescuento }}</td>
+                        <td width="15px">
+                            <div class="d-flex">
 
-                             {{-- esto es para el de editar membresía --}}
-                            <a href="{{ route('promocion.edit', $promocion) }}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                                <i class="fa fa-lg fa-fw fa-pen"></i>
-                            </a>
+                                {{-- esto es para el de editar membresía --}}
+                                <a href="{{ route('promocion.edit', $promocion) }}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                                    <i class="fa fa-lg fa-fw fa-pen"></i>
+                                </a>
 
-                            <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete" data-toggle="modal" data-target="#modalCustom{{ $promocion->id }}">
-                                <i class="fa fa-lg fa-fw fa-trash"></i>
-                            </button>
-                           <a href="{{ route('promocion.show', $promocion) }}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                                <i class="fa fa-lg fa-fw fa-eye"></i>
-                            </a>  
+                                <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete" data-toggle="modal" data-target="#modalCustom{{ $promocion->id }}">
+                                    <i class="fa fa-lg fa-fw fa-trash"></i>
+                                </button>
+                            <a href="{{ route('promocion.show', $promocion) }}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                                    <i class="fa fa-lg fa-fw fa-eye"></i>
+                                </a>  
 
-                        </div>
-                    </td>
-                    {{-- Custom modal de eliminar --}}
-                    <x-adminlte-modal id="modalCustom{{ $promocion->id }}" title="Eliminar" size="sm" theme="dark" icon="fas fa-bell" v-centered static-backdrop scrollable>
-                        <div style="height: 50px;">¿Está seguro de eliminar la promocion?</div>
-                        <x-slot name="footerSlot">
-                            <form action="{{ route('promocion.destroy', $promocion) }}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <x-adminlte-button class="btn-flat" type="submit" label="Aceptar" theme="success" />
-                            </form>
-                            <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal" />
-                        </x-slot>
-                    </x-adminlte-modal>
+                            </div>
+                        </td>
+                        {{-- Custom modal de eliminar --}}
+                        <x-adminlte-modal id="modalCustom{{ $promocion->id }}" title="Eliminar" size="sm" theme="dark" icon="fas fa-bell" v-centered static-backdrop scrollable>
+                            <div style="height: 50px;">¿Está seguro de eliminar la promocion?</div>
+                            <x-slot name="footerSlot">
+                                <form action="{{ route('promocion.destroy', $promocion) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <x-adminlte-button class="btn-flat" type="submit" label="Aceptar" theme="success" />
+                                </form>
+                                <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal" />
+                            </x-slot>
+                        </x-adminlte-modal>
+                    @endif
                 </tr>
             @endforeach
         </x-adminlte-datatable>

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Restaurante',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Restaurante</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -84,7 +84,7 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'Auth Logo',
@@ -130,7 +130,7 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
@@ -150,10 +150,10 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_dark_mode' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-light-primary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -259,7 +259,7 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -352,7 +352,7 @@ return [
                 [
                     'text' => 'Permisos',
                     'icon'       => 'fa-brands fa-shopify',
-                    'route'  => 'promocion.index',
+                    'route'  => 'permiso.index',
                 ],
             ]
         ],

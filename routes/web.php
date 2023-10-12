@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PromocionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermisoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +42,9 @@ Route::middleware('auth')->group(function () {
 });
 //---------------------------rutas promociones---------------------JHOEL--------------------------//
 
-//---------------------------rutas promociones---------------------JHOEL--------------------------//
+//---------------------------rutas roles y permisos---------------------JHOEL--------------------------//
 Route::middleware('auth')->group(function () {
     Route::resource('/role', RoleController::class)->names('role');
+    Route::resource('/permiso', PermisoController::class)->names('permiso');
 });
-//---------------------------rutas promociones---------------------JHOEL--------------------------//
+//---------------------------rutas roles y permisos---------------------JHOEL--------------------------//
