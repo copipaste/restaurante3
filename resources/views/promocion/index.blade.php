@@ -5,68 +5,30 @@
 @stop
 
 @section('content')
-{{-- @if (session('success'))
-    <x-adminlte-alert id="success-alert" theme="success" title="Success">
-        {{ session('success') }}
-    </x-adminlte-alert>
-    <script>
-        setTimeout(function(){
-            document.getElementById('success-alert').style.display = 'none';
-        }, 5000); // Cambia 5000 por la duración en milisegundos que deseas (por ejemplo, 5000 para 5 segundos)
-    </script>
-@endif
-@if (session('deleted'))
-    <x-adminlte-alert id="success-alert" theme="success" title="Success">
-        {{ session('deleted') }}
-    </x-adminlte-alert>
-    <script>
-        setTimeout(function(){
-            document.getElementById('success-alert').style.display = 'none';
-        }, 5000); // Cambia 5000 por la duración en milisegundos que deseas (por ejemplo, 5000 para 5 segundos)
-    </script>
-@endif --}}
-{{-- <div class="form-group align-items-end">
-    <div class="btn btn-lg btn-default" >
-        <a href="{{ route('create/estimate/page') }}" class="text-dark" >
-            <i class="fa fa-lg fa-fw fa-plus"></i>
-            Nueva Venta</a>
-    </div>
-</div> --}}
+
 
 <div class="form-group align-items-end">
      {{-- ---Custom modal-- --}}
-     <x-adminlte-modal id="modalpromocion" title="Crear Promocion" size="lg" theme="dark" icon="fas fa-bell" v-centered static-backdrop scrollable>
-
-        <form action="{{ route('promocion.store') }}" method="POST">
-                    @method('POST') {{-- Utilizamos el método PUT para actualizar el recurso --}}
-                    @csrf
-                            
-                            <x-adminlte-input name="nombre" label="Nombre"/>
-                            <x-adminlte-textarea name="descripcion" label="Description" rows=5  igroup-size="sm" placeholder="Inserte descripcion...">
-                                    <x-slot name="prependSlot">
-                                        <div class="input-group-text bg-dark">
-                                            <i class="fas fa-lg fa-file-alt text-warning"></i>
-                                        </div>
-                                    </x-slot>
-                            </x-adminlte-textarea>  
-                            <x-adminlte-input name="procentajeDescuento" type="number" label="Porcentaje de descuento"/>
-                            
-                            <div class ="text-right">
-                                <x-adminlte-button  class="float-left mt-3" type="submit" label="Aceptar"
-                                theme="success" />
-
-                                <x-adminlte-button  class="btn btn-primary float-right mt-3" theme="danger" label="Cancelar" data-dismiss="modal" />
-                            </div>
-                            <x-slot name="footerSlot" >
-                            </x-slot>
-        </form>
-
-    </x-adminlte-modal>
-
 
         {{-- ---Custom modal-- --}}
         <x-adminlte-button label="Crear Promocion" class="bg-white" title="Crear promocion"
         data-toggle="modal" data-target="#modalpromocion" />
+
+        <x-adminlte-modal id="modalpromocion" title="Crear Promocion" size="lg" theme="dark" icon="fas fa-bell" v-centered static-backdrop scrollable>    
+            <form action="{{ route('promocion.store') }}" method="POST">
+                        @method('POST') {{-- Utilizamos el método PUT para actualizar el recurso --}}
+                        @csrf
+                                
+                                <x-adminlte-input name="nombre" label="Nombre" type="text" label="Nombre de la promocion" />
+                                <x-adminlte-input name="procentajeDescuento" type="number" label="Porcentaje de descuento"/>
+                                <x-adminlte-input name="descripcion" label="descripcion" type="text" label="Descripcion de la promocion" />
+                                <x-adminlte-button  class="float-left mt-3" type="submit" label="Aceptar" theme="success" />   
+                                <x-adminlte-button  class="btn btn-primary float-right mt-3" theme="danger" label="Cancelar" data-dismiss="modal" />
+                                {{-- <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal" /> --}}
+                                <x-slot name="footerSlot" >
+                                </x-slot>                   
+            </form>
+        </x-adminlte-modal>
 </div>
 
 
