@@ -64,12 +64,12 @@ class UserController extends Controller
     }
 
     public function logout(){
-        auth()->user()->tokens()->delete();
+        // auth()->user()->tokens()->delete();
         
-        $data = [
-            "success" => true,
-            "mensaje" =>"Logout"
-        ];
-        return response()->json($data,200);
+        // $data = [
+        //     "success" => true,
+        //     "mensaje" =>"Logout"
+        // ];
+        // return response()->json($data,200);
     }
 }
