@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PromocionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AmbienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +50,24 @@ Route::middleware('auth')->group(function () {
     Route::resource('/permiso', PermisoController::class)->names('permiso');
 });
 //---------------------------rutas roles y permisos---------------------JHOEL--------------------------//
+
+
+
+//---------------------------------Juan Pablo(crud clientes)--------------------------------------------
+Route::resource('/cliente', ClienteController::class)->names('clientes');
+
+// Route::get('/cliente/{cliente}/edit', 'ClienteController@edit')->name('clientes.edit');
+// Route::delete('/clientes/{cliente}', 'ClienteController@destroy')->name('clientes.delete');
+// Route::get('/clientes', 'ClienteController@index')->name('clientes.index');
+// Route::put('/clientes/{cliente}', 'ClienteController@update')->name('clientes.update');
+//---------------------------------Juan Pablo(crud clientes)--------------------------------------------
+
+
+
+
+//TODO: borrar el comentario de abajo para que solamente los usuarios autenticados puedan acceder a las rutas
+// ---------------------------------- RUTAS DE AMBIENTES ---------------------------------- ALEX
+Route::middleware('auth')->group(function () {
+    Route::resource('/ambiente', AmbienteController::class)->names('ambiente');
+});
+//-----------------------------------------------------------------------------------------

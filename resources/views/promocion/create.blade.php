@@ -10,7 +10,7 @@
 
    
 
-    @if ($errors->any())
+    {{-- @if ($errors->any())
     <div class="alert alert-warning alert-dissmissible fade show" role = "alert">
         <ul>
             @foreach ($errors->all as $error )
@@ -19,7 +19,7 @@
         </ul>
 
     </div>
-    @endif
+    @endif --}}
 
 
 <form method="POST" action = "{{route('promocion.store')}}">

@@ -8,9 +8,16 @@
 
     <div class="card">
         <div class="card-body">
-            <p><strong>Nombre:</strong> {{ $promocion->nombre }}</p>
-            <p><strong>Descripcion:</strong>{{$promocion->descripcion}}</p>
-            <p><strong>Porcentaje de descuento:</strong>{{$promocion->procentajeDescuento}}</p>
+            @if ($promocion->nombre != null)
+                <p><strong>Nombre:</strong> {{ $promocion->nombre }}</p>
+            @endif
+            @if ($promocion->descripcion != null)
+                <p><strong>Descripcion:</strong>{{$promocion->descripcion}}</p>
+            @endif
+            @if ($promocion->descripcion != null)
+                <p><strong>Porcentaje de descuento:</strong>{{$promocion->procentajeDescuento}}</p>
+            @endif
+            
         </div>
     </div>
 

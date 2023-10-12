@@ -1,47 +1,61 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!-- Container -->
+<div class="flex flex-wrap min-h-screen w-full content-center justify-center
+bg-[url('https://static.vecteezy.com/system/resources/previews/014/402/031/non_2x/people-in-the-restaurant-blurred-background-free-photo.jpg')]
+bg-cover py-10">
 
-    <form method="POST" action="{{ route('login') }}">
+<!-- Login component -->
+<div class="flex shadow-md">
+  <!-- Login form -->
+  <div class="flex flex-wrap content-center justify-center rounded-l-md bg-white" style="width: 24rem; height: 32rem;">
+    <div class="w-72">
+      <!-- Heading -->
+      <h1 class="text-xl font-semibold">Bienvenido</h1>
+      <small class="text-gray-400">Por favor inicie sesion</small>
+
+      <!-- Form -->
+      <form method="POST" action="{{ route('login') }}" class="mt-4">
         @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="mb-3">
+          <label class="mb-2 block text-xs font-semibold" for="email" :value="__('Email')">Email</label>
+          <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username"
+          placeholder="Enter your email" class="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" />
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="mb-3">
+          <label class="mb-2 block text-xs font-semibold" for="password" :value="__('Email')">Password</label>
+          <input id="password"
+                type="password"
+                name="password"
+                required autocomplete="current-password"
+                placeholder="***" class="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" />
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
+        <div class="mb-3 flex flex-wrap content-center">
+          <input id="remember" type="checkbox" class="mr-1 checked:bg-purple-700" /> <label for="remember" class="mr-auto text-xs font-semibold">Recordar Contraseña</label>
+          <a href="#" class="text-xs font-semibold text-purple-700">Recuperar contraseña</a>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+        <div class="mb-3">
+            <button class="mb-1.5 block w-full text-center text-white bg-purple-700 hover:bg-purple-900
+            px-2 py-1.5 rounded-md">Sign in</button>
+          </div>
+      </form>
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+      <!-- Footer -->
+      <div class="text-center">
+        <span class="text-xs text-gray-400 font-semibold">Registrarse</span>
+        <a href="#" class="text-xs font-semibold text-purple-700">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login banner -->
+  <div class="flex flex-wrap content-center justify-center rounded-r-md" style="width: 24rem; height: 32rem;">
+    <img class="w-full h-full bg-center bg-no-repeat bg-cover rounded-r-md" src="https://img.pikbest.com/backgrounds/20190408/restaurant-poster-background-image-open-at-night_2771856.jpg!w700wp">
+  </div>
+
+</div>
+
+<!-- Credit -->
+</div>
+<script src="https://cdn.tailwindcss.com"></script>

@@ -74,6 +74,8 @@
 <div class="card">
     <div class="card-body">
         <x-adminlte-datatable id="table1" :heads="$heads" hoverable with-buttons>
+            @if ($promociones->count() !=0)
+        
             @foreach($promociones as $promocion)
                 <tr>
                    
@@ -116,6 +118,7 @@
                     @endif
                 </tr>
             @endforeach
+            @endif
         </x-adminlte-datatable>
     </div>
 </div>

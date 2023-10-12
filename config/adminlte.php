@@ -311,13 +311,13 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -330,86 +330,38 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'       => 'Promociones',
-            'icon'       => 'fas fa-clock',
-            'submenu'    => [
-                [
-                    'text' => 'Lista de Promociones',
-                    'icon'       => 'fa-brands fa-shopify',
-                    'route'  => 'promocion.index',
-                ],
-            ]
-        ],
+            'text' => 'Promociones',
+            'route'  => 'promocion.index',
+            'icon' => 'fas fa-list',
+            
+        ], 
         [
             'text'       => 'Roles y permisos',
-            'icon'       => 'fas fa-clock',
+            'icon'       => 'fas fa-user-tag',
             'submenu'    => [
                 [
                     'text' => 'Roles',
-                    'icon'       => 'fa-brands fa-shopify',
+                    'icon'       => 'fas fa-user-cog',
                     'route'  => 'role.index',
                 ],
                 [
                     'text' => 'Permisos',
-                    'icon'       => 'fa-brands fa-shopify',
+                    'icon'       => 'fas fa-user-cog',
                     'route'  => 'permiso.index',
                 ],
             ]
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
+                'text' => 'clientes',
+                'route'  => 'clientes.index',
+                'icon' => 'fas fa-user-friends',
+                
+        ],        
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+            'text' => 'ambiente',
+            'route'  => 'ambiente.index',
+            'icon' => 'fas fa-user-friends',    
+        ]
     ],
 
     /*
