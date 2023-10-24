@@ -361,7 +361,13 @@ return [
             'text' => 'ambiente',
             'route'  => 'ambiente.index',
             'icon' => 'fas fa-user-friends',    
+        ],
+        [
+            'text' => 'categorias',
+            'route'  => 'categoria.index',
+            'icon' => 'fas fa-user-friends',    
         ]
+
     ],
 
     /*
