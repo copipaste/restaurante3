@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AmbienteController;
+use App\Http\Controllers\categoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('/permiso', PermisoController::class)->names('permiso');
 });
 //---------------------------rutas roles y permisos---------------------JHOEL--------------------------//
+
+//---------------------------categorias---------------------JHOEL--------------------------//
+Route::middleware('auth')->group(function () {
+    Route::resource('/categoria', categoriaController::class)->names('categoria');
+});
+//---------------------------categorias---------------------JHOEL--------------------------//
 
 
 
