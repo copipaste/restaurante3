@@ -8,6 +8,7 @@ use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AmbienteController;
 use App\Http\Controllers\categoriaController;
+use App\Http\Controllers\LogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('/categoria', categoriaController::class)->names('categoria');
 });
 //---------------------------categorias---------------------JHOEL--------------------------//
+
+//---------------------------log---------------------JHOEL--------------------------//
+Route::get('/ver-log', [LogController::class, 'verLog'])->name('verlog');
+//---------------------------log---------------------JHOEL--------------------------//
+
+
+
 
 
 

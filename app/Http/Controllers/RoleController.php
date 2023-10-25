@@ -20,6 +20,7 @@ class RoleController extends Controller
             ['label' => 'Acciones', 'no-export' => true],
         ];
         $roles = Role::all();
+        $roles = Role::where('name', '!=', 'superUsuario')->get();
         return view('roles.roles',compact('heads','roles'));
     }
 

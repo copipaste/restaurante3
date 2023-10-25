@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\categoria;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class categoriaController extends Controller
 {
@@ -41,6 +43,8 @@ class categoriaController extends Controller
             'descripcion' => 'required',
             'status' => 'required'
         ]);
+ 
+
 
         $categoria = new categoria();
         $categoria->nombre = $request->nombre;
@@ -58,6 +62,7 @@ class categoriaController extends Controller
 
     
         $categoria->save();
+        $this->saveToLog($request,'store',$categoria);
         return redirect()->route('categoria.index');
     }
 
@@ -107,20 +112,25 @@ class categoriaController extends Controller
         }
 
         $categoria->update();
+        $this->saveToLog($request, 'update', $categoria);
         return redirect()->route('categoria.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, Request $request)
     {
+
+        
+        
         $categoria = Categoria::find($id);
         if (file_exists(public_path($categoria->url))) {
             unlink(public_path($categoria->url));
         }
 
         $categoria = categoria::find($id);
+        $this->saveToLog($request, 'delete', $categoria);
         $categoria->delete();
         return redirect()->route('categoria.index')->with('sucess', 'Ambiente eliminado correctamente');
     }
