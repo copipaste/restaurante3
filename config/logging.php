@@ -126,6 +126,13 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        'confidential' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/confidential.log'),
+            'level' => 'info',
+            'days' => 14,
+            'password' => env('CONFIDENTIAL_LOG_KEY'),
+        ],
     ],
 
 ];

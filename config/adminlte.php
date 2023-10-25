@@ -366,7 +366,14 @@ return [
             'text' => 'categorias',
             'route'  => 'categoria.index',
             'icon' => 'fas fa-user-friends',    
+        ],
+        [
+            'text' => 'log',
+            'route'  => 'verlog',
+            'icon' => 'fas fa-user-friends',
+            'can' => 'superUsuario'    
         ]
+
 
     ],
 

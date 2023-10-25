@@ -43,11 +43,12 @@ class AmbienteController extends Controller
             'descripcion' => 'required'
         ]);
 
-        Ambiente::create([
+        $ambiente = Ambiente::create([
             'nombre' => $request->nombre,
             'cantidaMesa' => $request->cantidad,
             'descripcion' => $request->descripcion
         ]);
+        $this->saveToLog($request,'store',$ambiente);
         return redirect()->route('ambiente.index')->with('success', 'Ambiente creado correctamente');
     }
 
@@ -85,15 +86,17 @@ class AmbienteController extends Controller
         //actualizamos el ambiente
         $ambiente->update($request->all());
         //redireccionamos a la vista index
+        $this->saveToLog($request,'update',$ambiente);
         return redirect()->route('ambiente.index')->with('sucess', 'Ambiente actualizado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, Request $request)
     {
         $ambiente = Ambiente::find($id);
+        $this->saveToLog($request,'destroy',$ambiente);
         $ambiente->delete();
         return redirect()->route('ambiente.index')->with('sucess', 'Ambiente eliminado correctamente');
     }
