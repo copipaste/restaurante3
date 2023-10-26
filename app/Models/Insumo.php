@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Insumo extends Model
 {
+
     use HasFactory;
+    protected $table = 'insumos';
     const ACTIVO = 1;
     const INACTIVO = 0;
 

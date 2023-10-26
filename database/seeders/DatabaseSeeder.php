@@ -18,22 +18,9 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(superUserSeeder::class);
+        $this->call(almacenSeeder::class);
         // \App\Models\User::factory(10)->create();
 
-        $role = Role::create(['name' => 'superUsuario']);
-
-
-        User::create([
-            'nombre' => 'SuperUsuario',
-            'fechaNacimiento' => null,
-            'sexo' => null,
-            'telefono' => null,
-            'email' => 'SuperUsuario@gmail.com',
-            'password' => bcrypt('password'),
-            'direccion' => null,
-            'nit' => null,
-            'tipo' => null,
-            'edad' => null,
-        ])->assignRole('superUsuario');
+ 
     }
 }

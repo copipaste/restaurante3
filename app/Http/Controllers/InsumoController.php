@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Insumo;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Proveedor;
+use App\Models\Almacen;
+use Illuminate\Support\Facades\Auth;
 
 
 class InsumoController extends Controller
@@ -14,6 +18,8 @@ class InsumoController extends Controller
     public function index()
     {
         $insumos = Insumo::all();
+        $proveedores = Proveedor::all();
+        $almacenes = Almacen::all();   
         $heads = [
             'Nombre',
             'Estado',
@@ -24,7 +30,7 @@ class InsumoController extends Controller
             'Almacen',
             ['label' => 'Acciones', 'no-export' => true],
         ];
-        return view('insumos.index', compact('heads','insumos'));
+        return view('insumos.index', compact('heads','insumos','proveedores','almacenes'));
     }
 
     /**
@@ -40,6 +46,7 @@ class InsumoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'nombre' => 'required',
             'status' => 'required',
@@ -47,42 +54,46 @@ class InsumoController extends Controller
             'unidad' => 'required',
             'minimoStock' => 'required',
             'almacen_id' => 'required',
-            'empleado_id' => 'required',
             'proveedor_id' => 'required',
             'fechaCompra' => 'required',
-            'fechaVencimiento' => 'required',
+            'fechaVencimiento' => 'required'
         ]);
- 
-        $insumo = Insumo::create([
-            'nombre' => $request->nombre,
-            'status' => $request->status,
-            'stock' => $request->stock,
-            'unidad' => $request->unidad,
-            'minimoStock' => $request->minimoStock,
-            'registrador' => $request->registrador,
-            'almacen_id' => $request->almacen_id,
-            'empleado_id' => $request->empleado_id,
-            'proveedor_id' => $request->proveedor_id,
-        ]);
+    
+        
+        $empleado =  Auth::user();
+         
+        //este metodo no funciona para asignacion con llaves foraneas razon ni idea 
+        // $insumo = Insumo::create([
+        //     'empleado_id' => $empleado->id,
+        //     'almacen_id' => $request->almacen_id,
+        //     'proveedor_id' => $request->proveedor_id,
+        //     'nombre' => $request->nombre,
+        //     'status' => $request->status,
+        //     'stock' => $request->stock,
+        //     'unidad' => $request->unidad,
+        //     'fechaCompra' => $request->fechaCompra,
+        //     'fechaVencimiento' => $request->fechaVencimiento,
+        //     'minimoStock' => $request->minimoStock,
+        //     'Registrador' => $empleado->nombre
+        // ]);
 
         $insumo = new Insumo();
+        $insumo->empleado_id = $empleado->id;
+        $insumo->almacen_id = $request->almacen_id;
+        $insumo->proveedor_id = $request->proveedor_id;
         $insumo->nombre = $request->nombre;
-        $insumo->descripcion = $request->descripcion;
         $insumo->status = $request->status;
+        $insumo->stock = $request->stock;
+        $insumo->unidad = $request->unidad;
+        $insumo->fechaCompra = $request->fechaCompra;
+        $insumo->fechaVencimiento = $request->fechaVencimiento;
+        $insumo->minimoStock = $request->minimoStock;
+        $insumo->Registrador = $empleado->nombre;
+        $insumo->save();
 
-        if( $request->hasFile('url')){
-            
-            $file = $request->file('url');
-            $destinationPath = 'images/category/';
-            $filename = time(). '-' .$file->getClientOriginalName();
-            $uploadSuccess = $request->file('url')->move($destinationPath, $filename);
-            $categoria->url = $destinationPath . $filename;
-        }
 
-    
-        $categoria->save();
-        $this->saveToLog($request,'store',$categoria);
-        return redirect()->route('categoria.index');
+        $this->saveToLog($request,'store',$insumo);
+        return redirect()->route('insumo.index');
     }
 
     /**
@@ -106,14 +117,50 @@ class InsumoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'status' => 'required',
+            'stock' => 'required',
+            'unidad' => 'required',
+            'minimoStock' => 'required',
+            'almacen_id' => 'required',
+            'proveedor_id' => 'required',
+            'fechaCompra' => 'required',
+            'fechaVencimiento' => 'required'
+        ]);
+
+
+        $insumo = Insumo::find($id);
+        $empleado =  Auth::user();
+
+ 
+        $insumo->empleado_id = $empleado->id;
+        $insumo->almacen_id = $request->almacen_id;
+        $insumo->proveedor_id = $request->proveedor_id;
+        $insumo->nombre = $request->nombre;
+        $insumo->status = $request->status;
+        $insumo->stock = $request->stock;
+        $insumo->unidad = $request->unidad;
+        $insumo->fechaCompra = $request->fechaCompra;
+        $insumo->fechaVencimiento = $request->fechaVencimiento;
+        $insumo->minimoStock = $request->minimoStock;
+        $insumo->Registrador = $empleado->nombre;
+        $insumo->update();
+ 
+        $this->saveToLog($request, 'update', $insumo);
+        return redirect()->route('insumo.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, Request $request)
     {
-        //
+        $Insumo = Insumo::find($id);
+ 
+        $Insumo = Insumo::find($id);
+        $this->saveToLog($request, 'delete', $Insumo);
+        $Insumo->delete();
+        return redirect()->route('insumo.index')->with('sucess', 'Insumo eliminado correctamente');
     }
 }

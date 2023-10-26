@@ -10,6 +10,7 @@ use App\Http\Controllers\AmbienteController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\InsumoController;
 
 
 /*
@@ -67,7 +68,7 @@ Route::get('/ver-log', [LogController::class, 'verLog'])->name('verlog');
 
 //---------------------------insumos---------------------JHOEL--------------------------//
 Route::middleware('auth')->group(function () {
-    Route::resource('/insumo', categoriaController::class)->names('insumo');
+    Route::resource('/insumo', InsumoController::class)->names('insumo');
 });
 //---------------------------insumos---------------------JHOEL--------------------------//
 
