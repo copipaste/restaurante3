@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $role = Role::create(['name' => 'superUsuario']);
-
+       
+        $this->call(superUserSeeder::class);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
@@ -79,18 +79,7 @@ class DatabaseSeeder extends Seeder
         
 
 
-        User::create([
-            'nombre' => 'SuperUsuario',
-            'fechaNacimiento' => null,
-            'sexo' => null,
-            'telefono' => null,
-            'email' => 'SuperUsuario@gmail.com',
-            'password' => bcrypt('password'),
-            'direccion' => null,
-            'nit' => null,
-            'tipo' => null,
-            'edad' => null,
-        ])->assignRole('superUsuario');
+
 
     }
 }
