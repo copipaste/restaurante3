@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\PedidoController;
 use App\Http\Controllers\API\ProductoController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -28,3 +29,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register',[UserController::class,'register']);
 Route::post('login',[UserController::class,'login']);
 //---------------------------rutas Login mobile---------------------MATIAS--------------------------//
+
+
+//---------------------------rutas Productos mobile---------------------MATIAS--------------------------//
+Route::get('productos',[ProductoController::class,'productos']);
+//---------------------------rutas Productos mobile---------------------MATIAS--------------------------//
+
+
+//---------------------------rutas Pedidos mobile---------------------MATIAS--------------------------//
+Route::post('pedido',[PedidoController::class,'pedido']);
+//---------------------------rutas Pedidos mobile---------------------MATIAS--------------------------//
+
+//---------------------------rutas Compras mobile---------------------MATIAS--------------------------//
+Route::get('compras',[PedidoController::class,'compras']);
+//---------------------------rutas Compras mobile---------------------MATIAS--------------------------//
