@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">CLIENTE</h1>
+    <h1 class="m-0 text-dark">PERSONAL</h1>
 @stop
 
 @section('content')
@@ -19,16 +19,16 @@
             <x-adminlte-datatable id="table1" :heads="$heads" striped head-theme="white" with-buttons>
 
                 <div class="btn btn-lg btn-default mb-3">
-                    <a href="{{ route('clientes.create') }}" class="text-primary">
+                    <a href="{{ route('personal.create') }}" class="text-primary">
                         <i class="fas fa-street-view"></i>
-                        Agregar Cliente</a>
+                        Agregar Personal</a>
                 </div>
 
                 @php
                     $i = 1;
                 @endphp
 
-                @foreach ($clientes as $user)
+                @foreach ($personal as $user)
                     <tr>
                         <td>{{ $user->nombre }}</td>
                         <td>{{ $user->fechaNacimiento }}</td>
@@ -42,7 +42,7 @@
 
                         <td width="15px"> {{-- esto es como una columna mas  --}}
                             <div class="d-flex"> {{-- esto es lo que hace que los datos esten uno al lado del otro --}}
-                                <a href="{{ route('clientes.edit', $user) }}"
+                                <a href="{{ route('personal.edit', $user) }}"
                                     class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit"><i
                                         class="fa fa-lg fa-fw fa-pen"></i></a>{{-- boton editar --}}
 
@@ -58,7 +58,7 @@
                                     <div style="height:80px;">Esta seguro de eliminar </div>
                                     <x-slot name="footerSlot">
 
-                                        <form action="{{ route('clientes.destroy', $user->id) }}" method="POST">
+                                        <form action="{{ route('personal.destroy', $user->id) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <x-adminlte-button class="btn-flat" type="submit" label="Aceptar"
@@ -67,7 +67,7 @@
                                         <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal" />
                                     </x-slot>
                                 </x-adminlte-modal>
-                                <a href="{{ route('clientes.show', $user->id) }}"
+                                <a href="{{ route('personal.show', $user->id) }}"
                                     class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
                                     <i class="fa fa-lg fa-fw fa-eye"></i>
                                 </a>

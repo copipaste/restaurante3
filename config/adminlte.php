@@ -368,6 +368,11 @@ return [
             'icon' => 'fas fa-people-carry',
         ],
         [
+            'text' => 'Almacén',
+            'route'  => 'almacen.index',
+            'icon' => 'fas fa-boxes',    
+        ],
+        [
             'text' => 'categorias',
             'route'  => 'categoria.index',
             'icon' => 'fas fa-stream',    
@@ -379,11 +384,22 @@ return [
             'can' => 'superUsuario',  
         ],
         [
+            'text' => 'personal',
+            'route'  => 'personal.index',
+            'icon' => 'fas fa-vest-patches',    
+        ],
+        [
+            'text' => 'producto',
+            'route'  => 'producto.index',
+            'icon' => 'fas fa-cookie-bite',    
+        ],
+        [
             'text' => 'insumos',
             'route'  => 'insumo.index',
             'icon' => 'fas fa-shopping-basket',  
         ]
         
+
 
     ],
 

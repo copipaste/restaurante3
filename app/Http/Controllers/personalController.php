@@ -6,27 +6,28 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class ClienteController extends Controller
+class personalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {   $heads = [
+    {
+        $heads = [
             'nombre',
             'fechaNacimiento',
-            'sexo' ,
-            'telefono' ,
-            'email' ,
-            'direccion' ,
+            'sexo',
+            'telefono',
+            'email',
+            'direccion',
             'nit',
-            'tipo', 
+            'tipo',
             'edad',
             ['label' => 'Acciones', 'no-export' => true],
-    ];
-        $clientes = User::where('tipo', 'cliente')->get();
-        //return dd($clientes);
-        return view('clientes.index', compact('clientes', 'heads'));
+        ];
+        $personal = User::where('tipo', 'personal')->get();
+
+        return view('personal.index', compact('personal', 'heads'));
     }
 
     /**
@@ -34,7 +35,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('clientes.create');
+        return view('personal.create');
     }
 
     /**
@@ -55,8 +56,8 @@ class ClienteController extends Controller
             'tipo' => 'required',
             'edad' => 'required',
         ]);
-        
-        $cliente = User::create([
+
+        $personal = User::create([
             'nombre' => $request->nombre,
             'fechaNacimiento' => $request->fechaNacimiento,
             'sexo' => $request->sexo,
@@ -65,11 +66,11 @@ class ClienteController extends Controller
             'password' => Hash::make($request->password),
             'direccion' => $request->direccion,
             'nit' => $request->nit,
-            'tipo' => 'cliente',
+            'tipo' => 'personal',
             'edad'  => $request->edad,
         ]);
-        
-        return redirect()->route('clientes.index', $cliente);
+
+        return redirect()->route('personal.index', $personal);
     }
 
     /**
@@ -77,9 +78,8 @@ class ClienteController extends Controller
      */
     public function show(string $id)
     {
-        $cliente = User::find($id);
-       // return dd($cliente);
-        return view('clientes.show', compact('cliente'));
+        $personal = User::find($id);
+        return view('personal.show', compact('personal'));
     }
 
     /**
@@ -87,8 +87,8 @@ class ClienteController extends Controller
      */
     public function edit(string $id)
     {
-        $cliente = User::find($id);
-        return view('clientes.edit', ['cliente' => $cliente]);
+        $personal = User::find($id);
+        return view('personal.edit', ['personal' => $personal]);
     }
 
     /**
@@ -102,19 +102,18 @@ class ClienteController extends Controller
             'sexo' => 'required',
             'telefono' => 'required',
             'email' => 'required',
-            'password' => 'required',
             'direccion' => 'required',
             'nit' => 'required',
             'tipo' => 'required',
             'edad' => 'required',
         ]);
-        //buscamos el ambiente a actualizar
-        $cliente = User::findOrFail($id);
-        //actualizamos el ambiente
-        $cliente->update($request->all());
-        //redireccionamos a la vista index
+        //buscamos al personal a actualizar
+        $personal = User::findOrFail($id);
+        //actualizamos el personal
+        $personal->update($request->all());
 
-        return redirect()->route('clientes.index')->with('sucess', 'Cliente actualizado con éxito');
+        //redireccionamos a la vista index
+        return redirect()->route('personal.index')->with('sucess', 'Personal actualizado con éxito');
     }
 
     /**
@@ -122,8 +121,8 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        $cliente = User::findOrFail($id);
-        $cliente->delete();
-        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado con éxito');
+        $personal = User::findOrFail($id);
+        $personal->delete();
+        return redirect()->route('personal.index')->with('success', 'Personal eliminado con éxito');
     }
 }
