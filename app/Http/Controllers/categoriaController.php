@@ -20,7 +20,7 @@ class categoriaController extends Controller
             'Descripcion',
             'Estado',
             'Portada',
-            'Acciones'
+            ['label' => 'Acciones', 'no-export' => true],
         ];
         return view('categorias.index', compact('heads','categorias'));
     }

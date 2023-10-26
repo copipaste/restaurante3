@@ -365,7 +365,7 @@ return [
         [
             'text' => 'Proveedores',
             'route'  => 'proveedor.index',
-            'icon' => 'fas fa-people-carry',    
+            'icon' => 'fas fa-people-carry',
         ],
         [
             'text' => 'Almacén',
@@ -375,13 +375,13 @@ return [
         [
             'text' => 'categorias',
             'route'  => 'categoria.index',
-            'icon' => 'fas fa-user-friends',    
+            'icon' => 'fas fa-stream',    
         ],
         [
             'text' => 'log',
             'route'  => 'verlog',
-            'icon' => 'fas fa-user-friends',
-            'can' => 'superUsuario'    
+            'icon' => 'fas fa-file-code',
+            'can' => 'superUsuario',  
         ],
         [
             'text' => 'personal',
@@ -392,6 +392,11 @@ return [
             'text' => 'producto',
             'route'  => 'producto.index',
             'icon' => 'fas fa-cookie-bite',    
+        ],
+        [
+            'text' => 'insumos',
+            'route'  => 'insumo.index',
+            'icon' => 'fas fa-shopping-basket',  
         ]
         
 
