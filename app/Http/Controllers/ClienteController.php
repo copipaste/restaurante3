@@ -12,22 +12,10 @@ class ClienteController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   $heads = [
-            'nombre',
-            'fechaNacimiento',
-            'sexo' ,
-            'telefono' ,
-            'email' ,
-            'password' ,
-            'direccion' ,
-            'nit',
-            'tipo', 
-            'edad',
-            ['label' => 'Acciones', 'no-export' => true],
-    ];
+    {
         $clientes = User::where('tipo', 'cliente')->get();
         //return dd($clientes);
-        return view('clientes.index', compact('clientes', 'heads'));
+        return view('clientes.index', compact('clientes'));
     }
 
     /**
@@ -44,19 +32,17 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
-            'nombre' => 'required',
-            'fechaNacimiento' => 'required',
-            'sexo' => 'required',
-            'telefono' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'direccion' => 'required',
-            'nit' => 'required',
-            'tipo' => 'required',
-            'edad' => 'required',
+            'nombre' => ['required', 'string', 'max:255'],
+            'fechaNacimiento' => ['required', 'date'],
+            'sexo' => ['required', 'string', 'max:255'],
+            'telefono' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'direccion' => ['required', 'string', 'max:255'],
+            'nit' => ['required', 'string', 'max:255'],
+            'tipo' => ['required', 'string', 'max:255'],
+            'edad' => ['required', 'string', 'max:255'],
         ]);
-        
         $cliente = User::create([
             'nombre' => $request->nombre,
             'fechaNacimiento' => $request->fechaNacimiento,
@@ -69,7 +55,6 @@ class ClienteController extends Controller
             'tipo' => 'cliente',
             'edad'  => $request->edad,
         ]);
-        
         return redirect()->route('clientes.index', $cliente);
     }
 
@@ -79,8 +64,8 @@ class ClienteController extends Controller
     public function show(string $id)
     {
         $cliente = User::find($id);
-       // return dd($cliente);
-        return view('clientes.show', compact('cliente'));
+        return dd($cliente);
+            return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -97,26 +82,13 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        request()->validate([
-            'nombre' => 'required',
-            'fechaNacimiento' => 'required',
-            'sexo' => 'required',
-            'telefono' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'direccion' => 'required',
-            'nit' => 'required',
-            'tipo' => 'required',
-            'edad' => 'required',
-        ]);
-        //buscamos el ambiente a actualizar
-        $cliente = User::findOrFail($id);
-        //actualizamos el ambiente
-        $cliente->update($request->all());
-        //redireccionamos a la vista index
-       
+        $cliente = User::find($id);
+        $cliente->nombre = $request->input('nombre');
+        $cliente->email = $request->input('email');
 
-        return redirect()->route('clientes.index')->with('sucess', 'Cliente actualizado con éxito');
+        $cliente->save();
+
+        return redirect('clientes')->with('success', 'Cliente actualizado con éxito');
     }
 
     /**

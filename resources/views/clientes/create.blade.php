@@ -53,7 +53,7 @@
                 {!! Form::label('edad','Edad')!!}
                 {!! Form::number('edad',null, ['class'=>'form-control', 'placeholder'=> 'edad del cliente']) !!}
             </div>
-                {!! Form::submit('Guardar cliente', ['class'=>'btn btn-primary']) !!}
+                {!! Form::submit('Guardar producto', ['class'=>'btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>
     </div>
