@@ -363,10 +363,22 @@ return [
             'icon' => 'fas fa-user-friends',    
         ],
         [
+            'text' => 'Proveedores',
+            'route'  => 'proveedor.index',
+            'icon' => 'fas fa-people-carry',
+        ],
+        [
             'text' => 'categorias',
             'route'  => 'categoria.index',
             'icon' => 'fas fa-user-friends',    
+        ],
+        [
+            'text' => 'log',
+            'route'  => 'verlog',
+            'icon' => 'fas fa-user-friends',
+            'can' => 'superUsuario'    
         ]
+
 
     ],
 
