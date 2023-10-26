@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,12 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
         $this->call(superUserSeeder::class);
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $role = Role::create(['name' => 'superUsuario']);
+
+
+        User::create([
+            'nombre' => 'SuperUsuario',
+            'fechaNacimiento' => null,
+            'sexo' => null,
+            'telefono' => null,
+            'email' => 'SuperUsuario@gmail.com',
+            'password' => bcrypt('password'),
+            'direccion' => null,
+            'nit' => null,
+            'tipo' => null,
+            'edad' => null,
+        ])->assignRole('superUsuario');
     }
 }

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('correo');
+            $table->string('telefono');
             $table->string('pais');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

@@ -7,8 +7,10 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AmbienteController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\LogController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
@@ -83,11 +85,15 @@ Route::resource('/cliente', ClienteController::class)->names('clientes');
 //---------------------------------Juan Pablo(crud clientes)--------------------------------------------
 
 
-
-
 //TODO: borrar el comentario de abajo para que solamente los usuarios autenticados puedan acceder a las rutas
 // ---------------------------------- RUTAS DE AMBIENTES ---------------------------------- ALEX
 Route::middleware('auth')->group(function () {
     Route::resource('/ambiente', AmbienteController::class)->names('ambiente');
 });
 //-----------------------------------------------------------------------------------------
+
+//--------------------------------- Alex (crud proveedores) ---------------------------------------
+Route::middleware('auth')->group(function () {
+    Route::resource('/proveedor', ProveedorController::class)->names('proveedor');
+});
+//-------------------------------------------------------------------------------------------------
