@@ -363,6 +363,10 @@ return [
             'icon' => 'fas fa-user-friends',    
         ],
         [
+            'text' => 'Proveedores',
+            'route'  => 'proveedor.index',
+            'icon' => 'fas fa-people-carry',    
+        ],
             'text' => 'categorias',
             'route'  => 'categoria.index',
             'icon' => 'fas fa-user-friends',    
@@ -371,7 +375,14 @@ return [
             'text' => 'personal',
             'route'  => 'personal.index',
             'icon' => 'fas fa-vest-patches',    
+        ],
+        [
+            'text' => 'log',
+            'route'  => 'verlog',
+            'icon' => 'fas fa-user-friends',
+            'can' => 'superUsuario'    
         ]
+
 
     ],
 
