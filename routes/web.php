@@ -63,6 +63,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/ver-log', [LogController::class, 'verLog'])->name('verlog');
 //---------------------------log---------------------JHOEL--------------------------//
 
+//---------------------------insumos---------------------JHOEL--------------------------//
+Route::middleware('auth')->group(function () {
+    Route::resource('/insumo', categoriaController::class)->names('insumo');
+});
+//---------------------------insumos---------------------JHOEL--------------------------//
 
 
 
