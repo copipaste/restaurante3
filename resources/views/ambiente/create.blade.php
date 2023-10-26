@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-body">
-                <form method="POST" action="{{ route('ambiente.index') }}">
+                <form method="POST" action="{{ route('ambiente.store') }}">
                     @csrf
                     <div class="form-group">
                         <label>Nombre</label>

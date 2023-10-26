@@ -46,6 +46,7 @@ class PromocionController extends Controller
             'descripcion' => $request->descripcion,
             'procentajeDescuento' => $request->procentajeDescuento,
         ]); 
+        $this->saveToLog($request,'store',$promocion);
 
         return redirect()->route('promocion.index', $promocion);
     }
@@ -81,6 +82,7 @@ class PromocionController extends Controller
         $promocion = Promocion::findOrFail($id);
        
         $promocion->update($request->all());
+        $this->saveToLog($request,'update',$promocion);
 
        return redirect()->route('promocion.index', $promocion);
     }
@@ -88,9 +90,10 @@ class PromocionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, Request $request)
     {
         $promocion = Promocion::find($id);
+        $this->saveToLog($request,'destroy',$promocion);
         $promocion->delete();
         return redirect()->route('promocion.index', $promocion)->with('mensaje','registro eliminado correctamente');             
     }
