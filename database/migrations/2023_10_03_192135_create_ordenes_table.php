@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ordenes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('empleado_id');
+            $table->unsignedBigInteger('empleado_id')->nullable();
             $table->unsignedBigInteger('direccion_id');
             $table->unsignedBigInteger('tipoPago_id');
             $table->unsignedBigInteger('promocion_id');
