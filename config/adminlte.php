@@ -372,11 +372,6 @@ return [
             'icon' => 'fas fa-user-friends',    
         ],
         [
-            'text' => 'personal',
-            'route'  => 'personal.index',
-            'icon' => 'fas fa-vest-patches',    
-        ],
-        [
             'text' => 'log',
             'route'  => 'verlog',
             'icon' => 'fas fa-user-friends',
