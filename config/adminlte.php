@@ -371,7 +371,7 @@ return [
             'text' => 'log',
             'route'  => 'verlog',
             'icon' => 'fas fa-user-friends',
-            'can' => 'superUsuario'    
+            'can' => 'superUsuario',  
         ]
 
 
