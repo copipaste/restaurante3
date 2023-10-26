@@ -9,7 +9,7 @@ class LogController extends Controller
 {
     public function verLog()
     {
-        $logPath = storage_path('logs\confidential.log');
+        $logPath = storage_path('logs/confidential.log');
         $logContent = File::get($logPath);
         
         return view('verLog', ['logContent' => $logContent]);
