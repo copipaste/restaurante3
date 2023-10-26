@@ -370,15 +370,20 @@ return [
         [
             'text' => 'categorias',
             'route'  => 'categoria.index',
-            'icon' => 'fas fa-user-friends',    
+            'icon' => 'fas fa-stream',    
         ],
         [
             'text' => 'log',
             'route'  => 'verlog',
-            'icon' => 'fas fa-user-friends',
-            'can' => 'superUsuario'    
+            'icon' => 'fas fa-file-code',
+            'can' => 'superUsuario',  
+        ],
+        [
+            'text' => 'insumos',
+            'route'  => 'insumo.index',
+            'icon' => 'fas fa-shopping-basket',  
         ]
-
+        
 
     ],
 
