@@ -8,6 +8,7 @@ use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AmbienteController;
 use App\Http\Controllers\categoriaController;
+use App\Http\Controllers\personalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,13 +64,12 @@ Route::middleware('auth')->group(function () {
 //---------------------------------Juan Pablo(crud clientes)--------------------------------------------
 Route::resource('/cliente', ClienteController::class)->names('clientes');
 
-// Route::get('/cliente/{cliente}/edit', 'ClienteController@edit')->name('clientes.edit');
-// Route::delete('/clientes/{cliente}', 'ClienteController@destroy')->name('clientes.delete');
-// Route::get('/clientes', 'ClienteController@index')->name('clientes.index');
-// Route::put('/clientes/{cliente}', 'ClienteController@update')->name('clientes.update');
 //---------------------------------Juan Pablo(crud clientes)--------------------------------------------
 
+//---------------------------------Juan Pablo(crud personal)--------------------------------------------
+Route::resource('/personal', personalController::class)->names('personal');
 
+//---------------------------------Juan Pablo(crud personal)--------------------------------------------
 
 
 //TODO: borrar el comentario de abajo para que solamente los usuarios autenticados puedan acceder a las rutas

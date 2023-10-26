@@ -366,6 +366,11 @@ return [
             'text' => 'categorias',
             'route'  => 'categoria.index',
             'icon' => 'fas fa-user-friends',    
+        ],
+        [
+            'text' => 'personal',
+            'route'  => 'personal.index',
+            'icon' => 'fas fa-vest-patches',    
         ]
 
     ],
