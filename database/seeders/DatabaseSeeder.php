@@ -30,5 +30,13 @@ class DatabaseSeeder extends Seeder
             'tipo' => null,
             'edad' => null,
         ])->assignRole('superUsuario');
+
+        \App\Models\categoria::create([
+            'id' => '1',
+            'nombre' => 'TIPICOS',
+            'descripcion' => '...',
+            'status' => '1',
+            'url' => 'wwww'
+        ]);
     }
 }

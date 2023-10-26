@@ -367,6 +367,12 @@ return [
             'route'  => 'proveedor.index',
             'icon' => 'fas fa-people-carry',    
         ],
+        [
+            'text' => 'Almacén',
+            'route'  => 'almacen.index',
+            'icon' => 'fas fa-boxes',    
+        ],
+        [
             'text' => 'categorias',
             'route'  => 'categoria.index',
             'icon' => 'fas fa-user-friends',    
@@ -376,7 +382,18 @@ return [
             'route'  => 'verlog',
             'icon' => 'fas fa-user-friends',
             'can' => 'superUsuario'    
+        ],
+        [
+            'text' => 'personal',
+            'route'  => 'personal.index',
+            'icon' => 'fas fa-vest-patches',    
+        ],
+        [
+            'text' => 'producto',
+            'route'  => 'producto.index',
+            'icon' => 'fas fa-cookie-bite',    
         ]
+        
 
 
     ],
