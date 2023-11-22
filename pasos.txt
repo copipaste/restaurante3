@@ -1,0 +1,2 @@
+correr este comando para que las imagenes se guarden bien
+php artisan storage:link

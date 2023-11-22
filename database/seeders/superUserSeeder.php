@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\categoria;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -28,5 +29,10 @@ class superUserSeeder extends Seeder
             'tipo' => null,
             'edad' => null,
         ])->assignRole('superUsuario');
+
+
+
+
+
     }
 }

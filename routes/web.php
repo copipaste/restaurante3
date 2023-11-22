@@ -11,7 +11,12 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\InsumoController;
-
+use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Frontend\MenuController;
+use App\Http\Controllers\Frontend\ReservationController;
+use App\Models\Post;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +31,7 @@ use App\Http\Controllers\InsumoController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -71,7 +76,26 @@ Route::middleware('auth')->group(function () {
     Route::resource('/insumo', InsumoController::class)->names('insumo');
 });
 //---------------------------insumos---------------------JHOEL--------------------------//
+//---------------------------MENU---------------------JHOEL--------------------------//
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
+Route::get('/reservation/step-one', [ReservationController::class, 'stepOne'])->name('reservations.step.one');
+Route::post('/reservation/step-one', [ReservationController::class, 'storeStepOne'])->name('reservations.store.step.one');
+Route::get('/reservation/step-two', [ReservationController::class, 'stepTwo'])->name('reservations.step.two');
+Route::post('/reservation/step-two', [ReservationController::class, 'storeStepTwo'])->name('reservations.store.step.two');
+// Route::get('/thankyou', [WelcomeController::class, 'thankyou'])->name('thankyou');
 
+
+Route::put('/menu/actualizar/{id}', [MenuController::class, 'update'])->name('menu.update');
+//---------------------------MENU---------------------JHOEL--------------------------//
+
+
+//---------------------------COMMENTS---------------------JHOEL--------------------------//
+Route::resource('/comments',CommentController::class)->names('comments');
+Route::resource('posts', PostController::class)->middleware('auth');
+
+//---------------------------COMMENTS---------------------JHOEL--------------------------//
 
 
 

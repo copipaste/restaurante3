@@ -13,10 +13,10 @@
     @endif
     {{-- ---Custom crear-- --}}
     <div class="form-group align-items-end">
-        <x-adminlte-button label="Crear Promocion" class="bg-white" title="Crear promocion"
+        <x-adminlte-button label="Crear Categoria" class="bg-white" title="Crear Categoria"
         data-toggle="modal" data-target="#modalcategoria" />
 
-        <x-adminlte-modal id="modalcategoria" title="Crear Promocion" size="lg" theme="dark" icon="fas fa-bell" v-centered static-backdrop scrollable>    
+        <x-adminlte-modal id="modalcategoria" title="Crear Categoria" size="lg" theme="dark" icon="fas fa-bell" v-centered static-backdrop scrollable>    
             <form action="{{ route('categoria.store') }}" method="POST" enctype="multipart/form-data">
                         @method('POST') {{-- Utilizamos el método PUT para actualizar el recurso --}}
                         @csrf
@@ -33,7 +33,7 @@
                                   <div class="form-group">
                                      <label for="status">Estado</label>
                                      <select name="status" id="status" class="form-control">
-                                         <option value="">ELEGIR CATEGORIA</option>
+                                         <option value="">ELEGIR ESTADO DE LA CATEGORIA</option>
                                          <option value="1">Activo</option>
                                          <option value="0">Inactivo</option>
                                      </select>
