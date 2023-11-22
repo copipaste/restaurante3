@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-
         $this->call(superUserSeeder::class);
         $this->call(almacenSeeder::class);
         // \App\Models\User::factory(10)->create();
@@ -27,13 +26,16 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+
         \App\Models\categoria::create([
             'id' => '1',
             'nombre' => 'TIPICOS',
             'descripcion' => '...',
             'status' => '1',
-            'url' => 'wwww' 
+            'url' => 'wwww'
         ]);
+
+
 
         \App\Models\Producto::create([
             'id' => '1',
@@ -81,10 +83,5 @@ class DatabaseSeeder extends Seeder
         ]);
 
         
-
-
-
-
-
     }
 }
