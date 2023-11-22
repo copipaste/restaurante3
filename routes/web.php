@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PromocionController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\AmbienteController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\personalController;
+use App\Http\Controllers\productoController;
 use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\MenuController;
@@ -17,6 +20,7 @@ use App\Http\Controllers\Frontend\ReservationController;
 use App\Models\Post;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -111,14 +115,34 @@ Route::resource('/cliente', ClienteController::class)->names('clientes');
 
 
 //TODO: borrar el comentario de abajo para que solamente los usuarios autenticados puedan acceder a las rutas
-// ---------------------------------- RUTAS DE AMBIENTES ---------------------------------- ALEX
+// -------------------------------- ALEX (RUTAS DE AMBIENTES) ------------------------------------
 Route::middleware('auth')->group(function () {
     Route::resource('/ambiente', AmbienteController::class)->names('ambiente');
 });
-//-----------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 
-//--------------------------------- Alex (crud proveedores) ---------------------------------------
+//--------------------------------- ALEX (crud proveedores) ---------------------------------------
 Route::middleware('auth')->group(function () {
     Route::resource('/proveedor', ProveedorController::class)->names('proveedor');
 });
 //-------------------------------------------------------------------------------------------------
+
+//--------------------------------- ALEX (CRUD ALMACEN) ---------------------------------------
+Route::middleware('auth')->group(function () {
+    Route::resource('/almacen', AlmacenController::class)->names('almacen');
+});
+//-------------------------------------------------------------------------------------------------
+
+//---------------------------------Juan Pablo(crud clientes)--------------------------------------------
+Route::resource('/cliente', ClienteController::class)->names('clientes');
+//-------------------------------------------------------------------------------------------------
+
+//---------------------------------Juan Pablo(crud personal)--------------------------------------------
+Route::resource('/personal', personalController::class)->names('personal');
+//-------------------------------------------------------------------------------------------------
+
+//---------------------------------Juan Pablo(crud producto)--------------------------------------------
+Route::resource('/producto', productoController::class)->names('producto');
+//-------------------------------------------------------------------------------------------------
+
+
