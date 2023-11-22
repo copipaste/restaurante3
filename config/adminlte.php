@@ -365,7 +365,7 @@ return [
         [
             'text' => 'Proveedores',
             'route'  => 'proveedor.index',
-            'icon' => 'fas fa-people-carry',    
+            'icon' => 'fas fa-people-carry',
         ],
         [
             'text' => 'categorias',
