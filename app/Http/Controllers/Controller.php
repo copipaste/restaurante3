@@ -20,7 +20,6 @@ class Controller extends BaseController
 
     public function saveToLog(Request $request,string $accion,$objeto){
         //pruebas
- 
         $ip = $request->ip();
         $user = Auth::user();
 

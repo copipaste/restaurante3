@@ -13,42 +13,42 @@
     @endif
     {{-- ---Custom crear-- --}}
     <div class="form-group align-items-end">
-        <x-adminlte-button label="Crear Promocion" class="bg-white" title="Crear promocion" data-toggle="modal"
-            data-target="#modalcategoria" />
 
-        <x-adminlte-modal id="modalcategoria" title="Crear Promocion" size="lg" theme="dark" icon="fas fa-bell"
-            v-centered static-backdrop scrollable>
+        <x-adminlte-button label="Crear Categoria" class="bg-white" title="Crear Categoria"
+        data-toggle="modal" data-target="#modalcategoria" />
+
+        <x-adminlte-modal id="modalcategoria" title="Crear Categoria" size="lg" theme="dark" icon="fas fa-bell" v-centered static-backdrop scrollable>    
             <form action="{{ route('categoria.store') }}" method="POST" enctype="multipart/form-data">
-                @method('POST') {{-- Utilizamos el método PUT para actualizar el recurso --}}
-                @csrf
+                        @method('POST') {{-- Utilizamos el método PUT para actualizar el recurso --}}
+                        @csrf
 
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="descripcion">Descripcion</label>
-                        <input type="text" name="descripcion" class="form-control" id="descripcion">
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Estado</label>
-                        <select name="status" id="status" class="form-control">
-                            <option value="">ELEGIR CATEGORIA</option>
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="url">Imagen</label>
-                        <input type="file" name="url" class="form control" id="url">
-                    </div>
-                </div>
+                             <div class="modal-body">
+                                 <div class="form-group">
+                                     <label for="nombre">Nombre</label>
+                                     <input type="text" name="nombre" class="form-control" id="nombre">
+                                  </div>
+                                  <div class="form-group">
+                                     <label for="descripcion">Descripcion</label>
+                                     <input type="text" name="descripcion" class="form-control" id="descripcion">
+                                  </div>
+                                  <div class="form-group">
+                                     <label for="status">Estado</label>
+                                     <select name="status" id="status" class="form-control">
+                                         <option value="">ELEGIR ESTADO DE LA CATEGORIA</option>
+                                         <option value="1">Activo</option>
+                                         <option value="0">Inactivo</option>
+                                     </select>
+                                  </div>
+                                  <div class="form-group">
+                                     <label for="url">Imagen</label>
+                                     <input type="file" name="url" class="form control" id="url">
+                                  </div>
 
-                <button type="submit" class="btn btn-primary float-left mt-3">Guardar</button>
-                <button type="button" class="btn btn-secondary float-right mt-3" data-dismiss="modal">Cerrar</button>
-                <x-slot name="footerSlot">
-                </x-slot>
+                             </div>     
+                             <button type="submit" class="btn btn-primary float-left mt-3">Guardar</button>
+                             <button type="button" class="btn btn-secondary float-right mt-3" data-dismiss="modal">Cerrar</button>
+                             <x-slot name="footerSlot" >   
+                             </x-slot>  
             </form>
         </x-adminlte-modal>
     </div>
