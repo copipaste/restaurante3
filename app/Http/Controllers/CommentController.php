@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -13,6 +14,9 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::latest()->with('user')->paginate(10);
+        if($comments->count() == 0){
+            $comments = null;
+        }
         return view('comment.index', compact('comments'));
     }
 
@@ -29,7 +33,23 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if(Auth::check())
+        {
+            $request->validate([
+                'comment' => 'required',
+            ]);
+     
+            $comment = new Comment();
+            $comment->body = $request->comment;
+            $comment->user_id = auth()->user()->id;
+            $comment->save();
+            return redirect()->route('comments.index');
+        }
+        else
+        {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -61,6 +81,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return redirect()->route('comments.index');
     }
 }
