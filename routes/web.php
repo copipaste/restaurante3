@@ -20,6 +20,8 @@ use App\Http\Controllers\Frontend\ReservationController;
 use App\Models\Post;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\API\ProduController;
+ 
 
 
 /*
@@ -147,5 +149,6 @@ Route::resource('/personal', personalController::class)->names('personal');
 //---------------------------------Juan Pablo(crud producto)--------------------------------------------
 Route::resource('/producto', productoController::class)->names('producto');
 //-------------------------------------------------------------------------------------------------
+ 
 
-
+Route::get('productos',[ProduController::class,'productos']);

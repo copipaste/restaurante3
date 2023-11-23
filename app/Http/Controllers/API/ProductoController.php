@@ -7,7 +7,7 @@ use App\Models\Producto;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProductoController extends Controller
+class ProduController extends Controller
 {
     public function productos(){
         $productos = Producto::all();
