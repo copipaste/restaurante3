@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\PedidoController;
 use App\Http\Controllers\API\ProductoController;
+use App\Http\Controllers\API\ReservaController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,12 +18,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware(['auth:sanctum'])->group((function(){
+    Route::get('logout',[UserController::class,'logout']);
+
+//---------------------------rutas Pedidos mobile---------------------MATIAS--------------------------//
+    Route::post('pedido',[PedidoController::class,'pedido']);
+//---------------------------rutas Pedidos mobile---------------------MATIAS--------------------------//
 
 
+//---------------------------rutas Compras mobile---------------------MATIAS--------------------------//
+    Route::get('compras',[PedidoController::class,'compras']);
+//---------------------------rutas Compras mobile---------------------MATIAS--------------------------//
 
+//---------------------------rutas Reservas mobile---------------------MATIAS--------------------------//
+Route::get('reservas',[ReservaController::class,'reservas']);
+
+Route::get('horarios',[ReservaController::class,'horarios']);
+
+Route::post('reservacreate',[ReservaController::class,'reservacreate']);
+//---------------------------rutas Reservas mobile---------------------MATIAS--------------------------//
+}));
+    
 
 
 //---------------------------rutas Login mobile---------------------MATIAS--------------------------//
@@ -36,10 +52,4 @@ Route::get('productos',[ProductoController::class,'productos']);
 //---------------------------rutas Productos mobile---------------------MATIAS--------------------------//
 
 
-//---------------------------rutas Pedidos mobile---------------------MATIAS--------------------------//
-Route::post('pedido',[PedidoController::class,'pedido']);
-//---------------------------rutas Pedidos mobile---------------------MATIAS--------------------------//
 
-//---------------------------rutas Compras mobile---------------------MATIAS--------------------------//
-Route::get('compras',[PedidoController::class,'compras']);
-//---------------------------rutas Compras mobile---------------------MATIAS--------------------------//

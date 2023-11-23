@@ -82,6 +82,53 @@ class DatabaseSeeder extends Seeder
             'procentajeDescuento' => '2.00'
         ]);
 
+
+        \App\Models\Horarios::create([
+            'id' => '1',
+            'hora' => "8:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '2',
+            'hora' => "9:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '3',
+            'hora' => "10:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '4',
+            'hora' => "11:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '5',
+            'hora' => "12:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '6',
+            'hora' => "13:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '7',
+            'hora' => "14:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '8',
+            'hora' => "15:30",
+            'cantidad' => 20,
+        ]);
+        \App\Models\Horarios::create([
+            'id' => '9',
+            'hora' => "16:30",
+            'cantidad' => 20,
+        ]);
+
         
     }
 }

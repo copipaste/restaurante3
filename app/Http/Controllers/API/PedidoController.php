@@ -12,6 +12,7 @@ use App\Models\Producto;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isNull;
 
@@ -19,14 +20,13 @@ class PedidoController extends Controller
 {
     public function pedido(Request $request)
     {
-
         $orden = new Ordenes();
         $orden->empleado_id = 1;
         $orden->direccion_id = 1;
         $orden->tipoPago_id = 1;
         $orden->promocion_id = 1;
         $orden->tipoOden_id = 1;
-        $orden->cliente_id = 1;
+        $orden->cliente_id = $request->user()->id;
         $orden->fecha = Carbon::now();
         $orden->subtotal = $request["total"];
         $orden->descuento = 0;
@@ -49,8 +49,8 @@ class PedidoController extends Controller
             
     }
 
-    public function compras(){
-        $compras = Ordenes::all();
+    public function compras(Request $request){
+        $compras = DB::select('SELECT * FROM ordenes WHERE cliente_id = ?', [$request->user()->id]);
         return response()->json($compras,200);
     }
 }

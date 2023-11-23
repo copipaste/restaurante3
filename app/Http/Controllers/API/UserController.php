@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -31,10 +30,10 @@ class UserController extends Controller
         ]);
 
 
-        //$user->assignRole("cliente");
-
-        $data = ["success"=>true,"mensaje"=>"Registro exitoso"];
-        return response()->json($data,200);
+        $token = $user->createToken('auth_token')->plainTextToken;
+        return response()->json([
+            'user' => $user, 'access_token' => $token, 'token_type' => 'Bearer'
+        ]);
     }
 
     public function login(Request $request){
@@ -63,13 +62,13 @@ class UserController extends Controller
         
     }
 
-    public function logout(){
-        // auth()->user()->tokens()->delete();
-        
-        // $data = [
-        //     "success" => true,
-        //     "mensaje" =>"Logout"
-        // ];
-        // return response()->json($data,200);
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+        $user->tokens()->delete();
+        return response()->json([
+            'message' => 'Cerraste Session Tokens borrados',
+            'usuario' => $user,
+        ],200);
     }
 }
